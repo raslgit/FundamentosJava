@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group 'br.com.iterasys'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//dependencias apagadas...junit5 = jupiter não esta fazendo sucesso
+// o codigo fonte fica na pasta java em src - main - java
+// criamos um pacote em new - package (pacote é um conjuntos de classes)
+// dentro do pacote fundamentos criamos uma classe Medidas...onde a classe medidas mora? No pacote fundamentos
+}
