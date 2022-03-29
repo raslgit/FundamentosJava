@@ -9,14 +9,14 @@ public class Medidas {
 
     //3.1 - Atributos (características, nome, telefone, Rg...)
     static Scanner entrada; //criei um objeto entrada do tipo Scanner...neste caso
-    //static Scanner entrada = new Scanner(System.in); funcionan tambe´´ se criar e instanciar aqui
+    //static Scanner entrada = new Scanner(System.in); funciona tambem se criar e instanciar aqui
 
 
     //3.2 - Métodos (sem retorno) e Funções (com retorno) (dormir, acordar, comer...)
     //é um metodo publico (todos podem ver), estático (carrega ao iniciar o programa), e não retorna nada (é um metodo), main é o nome do primeira metodo (orquestrador, maetro, gatilho), 90% é assim (String)
     public static void main(String[] args){
         String opcao;
-        int area = 0; //receber o resultado dos calculos de areas
+        float area = 0; //receber o resultado dos calculos de areas
 
         entrada = new Scanner(System.in); //instanciar o objeto de leitura do console...está iniciando/ligando o objeto entrada
 
@@ -33,7 +33,13 @@ public class Medidas {
                 area = calcularAreaDoQuadrado();
                 break;
             case "2":
-                //area = calcularAreaDoRetangulo();
+                area = calcularAreaDoRetangulo();
+                break;
+            case "3":
+                area = calcularAreaDoTriangulo();
+                break;
+            case "4":
+                area = calcularAreaDoCirculo();
                 break;
             default:
                 System.out.println("Opcao invalinha escolhida: " + opcao);
@@ -51,7 +57,50 @@ public class Medidas {
         lado = entrada.nextInt(); //leitura do tamanho do lado...nextInt = leia o proximo inteiro
         return lado*lado; //void não tem return...somente função tem return...neste caso queremos retornar o valor (neste acaso a area do quadrado)
 
+    }
 
+    public static int calcularAreaDoRetangulo(){
+
+        int ladoA = 0, ladoB = 0;
+        short x;
+
+        for(x=1; x<3; x++){
+            System.out.println("Digite o tamanho do lado " + x +  " do retangulo: ");
+            if (x==1){
+                ladoA = entrada.nextInt(); //leitura do tamanho do lado...nextInt = leia o proximo inteiro
+            }
+            else{
+                ladoB = entrada.nextInt(); //leitura do tamanho do lado...nextInt = leia o proximo inteiro
+            }
+        }
+
+        return ladoA*ladoB;
 
     }
+
+    public static int calcularAreaDoTriangulo(){
+
+        int base = 0, altura = 0;
+
+        System.out.println("Digite o tamanho da base do trinagulo: ");
+        base = entrada.nextInt(); //leitura do tamanho do lado...nextInt = leia o proximo inteiro
+        System.out.println("Digite o tamanho da altura do trinagulo: ");
+        altura = entrada.nextInt(); //leitura do tamanho do lado...nextInt = leia o proximo inteiro
+
+        return base*altura/2;
+
+    }
+
+    public static float calcularAreaDoCirculo(){
+
+        float raio = 0;
+        float pi = (float) 3.14;
+
+        System.out.println("Digite o tamanho do raio do circulo: ");
+        raio = entrada.nextInt(); //leitura do tamanho do lado...nextInt = leia o proximo inteiro
+
+        return raio*pi*pi;
+
+    }
+
 }
