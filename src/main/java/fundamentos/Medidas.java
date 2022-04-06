@@ -15,37 +15,64 @@ public class Medidas {
     //3.2 - Métodos (sem retorno) e Funções (com retorno) (dormir, acordar, comer...)
     //é um metodo publico (todos podem ver), estático (carrega ao iniciar o programa), e não retorna nada (é um metodo), main é o nome do primeira metodo (orquestrador, maetro, gatilho), 90% é assim (String)
     public static void main(String[] args){
-        String opcao;
+        String opcao = "";
         float area = 0; //receber o resultado dos calculos de areas
 
         entrada = new Scanner(System.in); //instanciar o objeto de leitura do console...está iniciando/ligando o objeto entrada
 
+        //opcao != "S" não funciona...mas o proprio intelij nos avisa
+        // uma outra opcao seria while(!opcao.toUpperCase().equals("S"))...pra transformar a letra maiuscula antes de verificar
+        while(!opcao.equals("S") && !opcao.equals("s")) {
+            System.out.println("Escolha o Calculo Desejado");
+            System.out.println("(1) - Area do Quadrado");
+            System.out.println("(2) - Area do Retangulo");
+            System.out.println("(3) - Area do Triangulo");
+            System.out.println("(4) - Area do Circulo");
+            System.out.println("(5) - Tabuada");
+            System.out.println("(6) - Fibonacci");
+            System.out.println("(7) - Fibonacci com Switch");
+            System.out.println("(8) - Contagem Regressiva");
+            System.out.println("(S) - Sair");
 
-        System.out.println("Escolha o Calculo Desejado");
-        System.out.println("(1) - Area do Quadrado");
-        System.out.println("(2) - Area do Retangulo");
-        System.out.println("(3) - Area do Triangulo");
-        System.out.println("(4) - Area do Circulo");
+            opcao = entrada.nextLine(); //leitura da opcao do teclado, neste caso um texto (por isso nextline())
+            switch (opcao) {
+                case "1":
+                    area = calcularAreaDoQuadrado();
+                    break;
+                case "2":
+                    area = calcularAreaDoRetangulo();
+                    break;
+                case "3":
+                    area = calcularAreaDoTriangulo();
+                    break;
+                case "4":
+                    area = calcularAreaDoCirculo();
+                    break;
+                case "5":
+                    tabuada();
+                    break;
+                case "6":
+                    fibonacci();
+                    break;
+                case "7":
+                    fibonacciComSwitch();
+                    break;
+                case "8":
+                    contagemRegressiva();
+                    break;
+                case "S":
+                case "s":
+                    System.out.println("Até mais animal de teta!! Obrigado pela preferencia!!!!");
+                    break;
+                //default:
+                    //System.out.println("Opcao invalida escolhida: " + opcao);
+            }
+            if (area > 0) {
+                System.out.println("A area é de: " + area + "m²");
+                area = 0;
+            }
+         }
 
-        opcao = entrada.nextLine(); //leitura da opcao do teclado, neste caso um texto (por isso nextline())
-        switch(opcao){
-            case "1":
-                area = calcularAreaDoQuadrado();
-                break;
-            case "2":
-                area = calcularAreaDoRetangulo();
-                break;
-            case "3":
-                area = calcularAreaDoTriangulo();
-                break;
-            case "4":
-                area = calcularAreaDoCirculo();
-                break;
-            default:
-                System.out.println("Opcao invalinha escolhida: " + opcao);
-        }
-
-        System.out.println("A area é de: " + area + "m²");
     }
 
     public static int calcularAreaDoQuadrado(){
@@ -55,6 +82,16 @@ public class Medidas {
         //Scanner entrada = new Scanner(System.in); //criamos o objeto para ler uma entrada no console
         System.out.println("Digite o tamanho do lado do Quadrado: ");
         lado = entrada.nextInt(); //leitura do tamanho do lado...nextInt = leia o proximo inteiro
+
+        // Desenhar o quadrado
+        for(int linha = 1; linha <= lado; linha++) {
+
+            for (int coluna = 1; coluna <= lado; coluna++) {
+                System.out.print("#");
+
+            }
+            System.out.println();
+        }
         return lado*lado; //void não tem return...somente função tem return...neste caso queremos retornar o valor (neste acaso a area do quadrado)
 
     }
@@ -87,6 +124,18 @@ public class Medidas {
         System.out.println("Digite o tamanho da altura do trinagulo: ");
         altura = entrada.nextInt(); //leitura do tamanho do lado...nextInt = leia o proximo inteiro
 
+        // Desenhar o triangulo (tentativa)
+        for(int linha = altura; linha >= 1; linha--) {
+
+            for (int coluna = 1; coluna <= base; coluna++) {
+                System.out.print("#");
+
+            }
+            base--;
+            System.out.println();
+        }
+
+
         return base*altura/2;
 
     }
@@ -102,5 +151,93 @@ public class Medidas {
         return raio*pi*pi;
 
     }
+
+
+    public static void tabuada() {
+        System.out.print("Voce quer calcular a tabuada de qual numero?: ");
+        byte numero = entrada.nextByte(); //byte é um numero de 0 ate 255....economia de memoria
+
+        for (byte i = 1; i <= 10; i++) {
+            System.out.println(numero + " * " + i + " = " + numero * i);
+        }
+
+    }
+
+    public static void fibonacci() {
+        System.out.print("Quantos numeros deseja calcular na sequencia? : ");
+        byte numero = entrada.nextByte();
+        int num1 = 0;
+        int num2 = 1;
+        int numSeq = 0;
+
+//segredo do fibonacci : 0_num1 1_num2 1_numSeq 2 3 5 8 13
+//segredo do fibonacci : 0_num1 1_num2 => num1 1_numSeq => num2 2_numSeq 3 5 8 13
+        if (numero > 0){
+            System.out.print(num1 + " " + num2 + " ");
+            if (numero > 1){
+                for (byte i = 1; i <= numero; i++){
+                    numSeq = num1 + num2;
+                    System.out.print(numSeq + " ");
+                    num1 = num2;
+                    num2 = numSeq;
+
+                }
+            }
+
+        }
+        else {
+            System.out.println("A Sequencia eh vazia");
+        }
+
+    
+
+
+    }
+
+    public static void fibonacciComSwitch() {
+        System.out.print("Quantos numeros deseja calcular na sequencia? : ");
+        byte numero = entrada.nextByte();
+
+        int num1 = 0;
+        int num2 = 1;
+        int numSeq = 0;
+
+        switch (numero) {
+            case 0:
+                System.out.println("A Sequencia eh vazia");
+                break;
+            case 1:
+                System.out.print(num1 + " " + num2 + " ");
+                break;
+            default:
+                System.out.print(num1 + " " + num2 + " ");
+                for (byte i = 1; i <= numero; i++) {
+                    numSeq = num1 + num2;
+                    System.out.print(numSeq + " ");
+                    num1 = num2;
+                    num2 = numSeq;
+                }
+
+        }
+
+    }
+
+    public static void contagemRegressiva(){
+        System.out.println("Comecar a contagem regressiva a partir de qual numero?: ");
+        int numero = entrada.nextInt();
+
+        System.out.println("Qual o decremento: ");
+        int decremento = entrada.nextInt();
+
+        //i-=decremento => i = i - decremento
+        for(int i = numero; i >= 1; i-= decremento){
+            System.out.println(i);
+        }
+
+
+
+    }
+
+
 
 }
