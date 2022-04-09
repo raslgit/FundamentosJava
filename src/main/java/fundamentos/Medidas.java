@@ -271,11 +271,67 @@ public class Medidas {
     }
 
     public static void divisaoPorZero(){
-        System.out.println("Qual eh o numero a ser dividido? ");
-        int numero = entrada.nextInt();
-        System.out.println("Qual o denominador? ");
-        int denominador = entrada.nextInt();
+        try {
+
+                System.out.print("Qual eh o numero a ser dividido? ");
+                byte numero = entrada.nextByte();// byte -127 até 127
+                System.out.print("Qual o denominador? ");
+                byte denominador = entrada.nextByte();
+
+                System.out.println("O resultado eh: " + numero / denominador);
+            }
+/*
+
+        catch (Exception e){
+            String erro = e.getMessage();
+            switch (erro){
+                case "/ by zero":
+                    System.out.println("Não é possível dividir por zero");
+                    break;
+
+            }
+        }
+*/
+        catch (Exception e){
+            System.out.println("Mensagem temporária em Inglês: " + e.getMessage());
+            entrada.nextLine();
+
+        }
+        finally {
+            System.out.println("Se quiser colocar este bloco....Por hoje é soh pepessoal");
+        }
+
 
     }
+
+
+
+
+
+    /*    //neste caso fiz com dois trys...um para cada erro...mas uma maneira mai simples é colocar tudo dentro de um try e pela mensagem ver o que aconteceu...se bem que entrada de string não mostrou muita coisa
+        try{
+            System.out.print("Qual eh o numero a ser dividido? ");
+            float numero = entrada.nextFloat();
+            System.out.print("Qual o denominador? ");
+            float denominador = entrada.nextFloat();
+            try{
+                System.out.println("O resultado eh: " + numero/denominador);
+
+            }
+            catch (Exception e){
+                //Esta parte somente é necessária se o tipo do numeor edenominador for int, caso contrario (float), o retorno do resultado é infinity e não retorna uma excepitiom
+                System.out.println("Não é possivel dividir por zero - Erro " + e.getMessage());//esse "e" + "." => eu estou pedindo pra ele pegar a mensagem do erro
+                System.out.println("Não é possivel dividir por zero - Erro " + e.getCause());//esse "e" + "." => eu estou pedindo pra ele pegar a mensagem do erro pra um determinado pais...mas rprecisa criai uma tabel ade conversão que o mula do prof não sabe
+            }
+
+
+
+        }
+        catch (Exception e){
+            System.out.println("Erro na Entrada dos valores! Erro " + e.getMessage());
+            entrada.nextLine();
+        }
+
+    }*/
 
 }
