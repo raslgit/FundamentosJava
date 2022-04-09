@@ -15,14 +15,18 @@ public class Medidas {
     //3.2 - Métodos (sem retorno) e Funções (com retorno) (dormir, acordar, comer...)
     //é um metodo publico (todos podem ver), estático (carrega ao iniciar o programa), e não retorna nada (é um metodo), main é o nome do primeira metodo (orquestrador, maetro, gatilho), 90% é assim (String)
     public static void main(String[] args){
-        String opcao = "";
+        //String opcao;
+        int opcao;
         float area = 0; //receber o resultado dos calculos de areas
+
+        //boolean bol = true;
 
         entrada = new Scanner(System.in); //instanciar o objeto de leitura do console...está iniciando/ligando o objeto entrada
 
         //opcao != "S" não funciona...mas o proprio intelij nos avisa
         // uma outra opcao seria while(!opcao.toUpperCase().equals("S"))...pra transformar a letra maiuscula antes de verificar
-        while(!opcao.equals("S") && !opcao.equals("s")) {
+        //while(!opcao.equals("S") && !opcao.equals("s")) {
+        do {
             System.out.println("Escolha o Calculo Desejado");
             System.out.println("(1) - Area do Quadrado");
             System.out.println("(2) - Area do Retangulo");
@@ -32,48 +36,72 @@ public class Medidas {
             System.out.println("(6) - Fibonacci");
             System.out.println("(7) - Fibonacci com Switch");
             System.out.println("(8) - Contagem Regressiva");
-            System.out.println("(S) - Sair");
+            System.out.println("(0) - Sair");
 
-            opcao = entrada.nextLine(); //leitura da opcao do teclado, neste caso um texto (por isso nextline())
+            //opcao = entrada.nextLine(); //leitura da opcao do teclado, neste caso um texto (por isso nextline())
+            //opcao = entrada.nextInt();
+            opcao = checkEntrada();
+
             switch (opcao) {
-                case "1":
+                case 1:
+                //case "1":
                     area = calcularAreaDoQuadrado();
                     break;
-                case "2":
+                case 2:
                     area = calcularAreaDoRetangulo();
                     break;
-                case "3":
+                case 3:
                     area = calcularAreaDoTriangulo();
                     break;
-                case "4":
+                case 4:
                     area = calcularAreaDoCirculo();
                     break;
-                case "5":
+                case 5:
                     tabuada();
                     break;
-                case "6":
+                case 6:
                     fibonacci();
                     break;
-                case "7":
+                case 7:
                     fibonacciComSwitch();
                     break;
-                case "8":
+                case 8:
                     contagemRegressiva();
                     break;
-                case "S":
-                case "s":
+                //case "S":
+                //case "s":
+                case 0:
                     System.out.println("Até mais animal de teta!! Obrigado pela preferencia!!!!");
+                    //bol = false;
                     break;
-                //default:
-                    //System.out.println("Opcao invalida escolhida: " + opcao);
+                default:
+                    System.out.println("Opcao invalida escolhida: " + opcao);
+                    //bol = false;
             }
+
             if (area > 0) {
                 System.out.println("A area é de: " + area + "m²");
                 area = 0;
+                //bol = true;
             }
-         }
+        } //while(!opcao.equals("S") && !opcao.equals("s"));
+        while(opcao!=0);
 
     }
+
+    //funcao pra validar o numero escolhido pelo usuário...se eh número inteiro,letra, float
+    public static int checkEntrada(){
+        while (!entrada.hasNextInt()){ //enquanto entrada não tiver um numero inteiro faça!
+            entrada.nextLine();
+            System.out.println("Somente numeros inteiros, please! Tente novamente: ");
+
+        }
+        int opcao = entrada.nextInt();
+        entrada.nextLine();
+        return opcao;
+
+    }
+
 
     public static int calcularAreaDoQuadrado(){
 
