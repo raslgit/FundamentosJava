@@ -36,6 +36,7 @@ public class Medidas {
             System.out.println("(6) - Fibonacci");
             System.out.println("(7) - Fibonacci com Switch");
             System.out.println("(8) - Contagem Regressiva");
+            System.out.println("(9) - Divisão por Zero");
             System.out.println("(0) - Sair");
 
             //opcao = entrada.nextLine(); //leitura da opcao do teclado, neste caso um texto (por isso nextline())
@@ -70,6 +71,9 @@ public class Medidas {
                     break;
                 //case "S":
                 //case "s":
+                case 9:
+                    divisaoPorZero();
+                    break;
                 case 0:
                     System.out.println("Até mais animal de teta!! Obrigado pela preferencia!!!!");
                     //bol = false;
@@ -266,6 +270,12 @@ public class Medidas {
 
     }
 
+    public static void divisaoPorZero(){
+        System.out.println("Qual eh o numero a ser dividido? ");
+        int numero = entrada.nextInt();
+        System.out.println("Qual o denominador? ");
+        int denominador = entrada.nextInt();
 
+    }
 
 }
