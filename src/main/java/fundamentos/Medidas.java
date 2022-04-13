@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Medidas {
 
     //3.1 - Atributos (características, nome, telefone, Rg...)
-    static Scanner entrada; //criei um objeto entrada do tipo Scanner...neste caso
-    //static Scanner entrada = new Scanner(System.in); funciona tambem se criar e instanciar aqui
+    //static Scanner entrada; //criei um objeto entrada do tipo Scanner...neste caso
+    static Scanner entrada = new Scanner(System.in); // funciona tambem se criar e instanciar aqui
 
 
     //3.2 - Métodos (sem retorno) e Funções (com retorno) (dormir, acordar, comer...)
@@ -21,7 +21,7 @@ public class Medidas {
 
         //boolean bol = true;
 
-        entrada = new Scanner(System.in); //instanciar o objeto de leitura do console...está iniciando/ligando o objeto entrada
+        //entrada = new Scanner(System.in); //instanciar o objeto de leitura do console...está iniciando/ligando o objeto entrada
 
         //opcao != "S" não funciona...mas o proprio intelij nos avisa
         // uma outra opcao seria while(!opcao.toUpperCase().equals("S"))...pra transformar a letra maiuscula antes de verificar
@@ -186,8 +186,9 @@ public class Medidas {
 
 
     public static void tabuada() {
+        byte numero = 1;
         System.out.print("Voce quer calcular a tabuada de qual numero?: ");
-        byte numero = entrada.nextByte(); //byte é um numero de 0 ate 255....economia de memoria
+        numero = entrada.nextByte(); //byte é um numero de -127 ate 127....economia de memoria
 
         for (byte i = 1; i <= 10; i++) {
             System.out.println(numero + " * " + i + " = " + numero * i);

@@ -14,4 +14,9 @@ dependencies {
 // o codigo fonte fica na pasta java em src - main - java
 // criamos um pacote em new - package (pacote é um conjuntos de classes)
 // dentro do pacote fundamentos criamos uma classe Medidas...onde a classe medidas mora? No pacote fundamentos
+
+    //peguei a informacao abaixo do site mvnrepository, fazendo uma pesquisa por open csv e escolhendo o mais usado e versao 4.2 => como estamos usando o gradle entao selecionamos a aba gradle e copiamos a informação e colamos aqui
+    //depois cliquei no elefantinho na parte superior diretira pra carregar a biblioteca do opencsv
+    implementation group: 'com.opencsv', name: 'opencsv', version: '4.2'
+
 }
